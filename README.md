@@ -1,32 +1,29 @@
-# Public pages for l0ffhax.github.io
+# l0ffhax.github.io
 
-This folder holds Znixx's public web pages. They live here so they're versioned with the
-game, but they're **published from a separate public repository**: `l0ffhax/l0ffhax.github.io`
-(this app repo is private, and GitHub Pages needs a public repo on the free plan).
+Public web pages, served by GitHub Pages at https://l0ffhax.github.io/ (Settings → Pages: deploy
+from branch `main`, folder `/`).
 
-| File                       | Published at                                   | Used for                                   |
-|----------------------------|------------------------------------------------|--------------------------------------------|
-| `znixx/index.html`         | https://l0ffhax.github.io/znixx/               | Store listing "website" field              |
-| `znixx/privacy/index.html` | https://l0ffhax.github.io/znixx/privacy/       | Play Console privacy policy URL (required) |
+## Znixx
 
-## Publish (one time)
+| File                       | Published at                             | Used for                                   |
+|----------------------------|------------------------------------------|--------------------------------------------|
+| `znixx/index.html`         | https://l0ffhax.github.io/znixx/         | Store listing "website" field              |
+| `znixx/privacy/index.html` | https://l0ffhax.github.io/znixx/privacy/ | Play Console privacy policy URL (required) |
+| `znixx/icon.png`           | https://l0ffhax.github.io/znixx/icon.png | Icon on both pages                         |
 
-1. On GitHub, create a **public** repository named exactly `l0ffhax.github.io`.
-2. Copy the contents of this folder into it (keep the `znixx/` folder) and push:
-   ```bash
-   git clone https://github.com/l0ffhax/l0ffhax.github.io.git
-   cp -r site/znixx l0ffhax.github.io/
-   cd l0ffhax.github.io && git add . && git commit -m "Add Znixx pages" && git push
-   ```
-3. In that repo: Settings → Pages → Source: *Deploy from a branch*, branch `main`, folder `/ (root)`.
-4. After a minute, open https://l0ffhax.github.io/znixx/privacy/ and check it loads.
+The pages are written in the Znixx app repository (private), in its `site/znixx/` folder, so they
+change together with the game. To publish a change, copy that folder over this repo's `znixx/`
+folder, check the diff, commit and push. Pages updates a minute or two later.
 
-The contact address in `znixx/privacy/index.html` is the one players see; use the same one in
-Play Console's store listing contact details.
+The privacy policy's contact address is the one players see; Play Console's store listing uses
+the same one.
 
-## Later: tappable https shape links
+## Later
 
-Because a user site serves from the domain root, it can also host
-`/.well-known/assetlinks.json`, which Android needs to open `https://l0ffhax.github.io/znixx/s/<code>`
-links straight in the app (App Links). That needs the SHA-256 fingerprint of the Play app signing
-key, so it's a post-launch step: see "Shape links over https" in `docs/release.md`.
+Because this is a user site served from the domain root, it can also host:
+
+- `/.well-known/assetlinks.json`, so `https://l0ffhax.github.io/znixx/s/<code>` shape links open
+  straight in the app (Android App Links; needs the Play app signing key's SHA-256 fingerprint);
+- `/app-ads.txt`, which AdMob asks for once ads are live (AdMob shows the line to put in it).
+
+The repository was once named `znixx.github.io`; GitHub redirects that name here.
